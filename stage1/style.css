@@ -26,6 +26,7 @@ body {
   align-items: center;
   font-family: "nueue";
   position: relative;
+  overflow: hidden;
 }
 
 .score-container {

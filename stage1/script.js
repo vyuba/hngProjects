@@ -28,7 +28,7 @@ function getRandomColors(num = 4) {
   return randomColors;
 }
 
-startGameButton.addEventListener("click", () => {
+const updateGame = () => {
   // Activate the round and update UI elements
   roundActive = true;
   clicked = false;
@@ -110,7 +110,9 @@ startGameButton.addEventListener("click", () => {
     // remove wrong class if added
     box.classList.remove("wrong");
   });
-});
+};
+
+startGameButton.addEventListener("click", updateGame);
 
 function createConfetti(target, count = 10) {
   const colors = ["red", "blue", "yellow", "green", "purple", "orange"];
