@@ -1,0 +1,253 @@
+*,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "nueue", sans-serif;
+}
+
+:root {
+  --background-color: #1d2330;
+  --color-primary: #161a24;
+  --color-secondary: white;
+  --color-tetiary: #252c3a;
+  --color-accent: #996dff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--color-secondary);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "nueue";
+  position: relative;
+}
+
+.score-container {
+  position: absolute;
+  top: 0;
+  text-transform: capitalize;
+  border-block-end: 2px solid var(--color-tetiary);
+  border-inline: 2px solid var(--color-tetiary);
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+  padding: 13px;
+}
+
+.instruction {
+  position: absolute;
+  bottom: 0;
+  text-transform: capitalize;
+  border: 2px solid var(--color-tetiary);
+  border-radius: 10px;
+  padding: 13px;
+  margin: 20px;
+}
+
+@font-face {
+  font-family: "nueue";
+  src: url("/stage0/tt_firs_neue/TT\ Firs\ Neue\ Trial\ Regular.ttf");
+  font-style: normal;
+}
+
+button {
+  all: unset;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: border 0.3s;
+}
+
+.game-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.start-game-button {
+  border: 1px solid var(--color-accent);
+  border-bottom: 5px solid var(--color-accent);
+  margin: 0;
+  margin-inline: auto;
+}
+
+.reset-game-button {
+  border: 1px solid red;
+  border-bottom: 5px solid red;
+  display: none;
+}
+.start-game-button:hover {
+  border: 1px solid var(--color-accent);
+  border-top: 5px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+.reset-game-button:hover {
+  border: 1px solid red;
+  border-top: 5px solid red;
+  border-bottom: 1px solid red;
+}
+.guessed-color {
+  color: var(--color-primary);
+  max-width: 500px;
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  border: 3px solid var(--color-tetiary);
+  position: relative;
+}
+
+.guessed-color::after {
+  content: "color box";
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  text-transform: capitalize;
+  padding: 10px;
+  padding-inline: 20px;
+  color: var(--color-secondary);
+  background-color: var(--background-color);
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-block-end: 2px solid var(--color-tetiary);
+  border-inline: 3px solid var(--color-tetiary);
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.color {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+.color-box {
+  width: 70px;
+  height: 70px;
+  border: 1px solid var(--color-tetiary);
+}
+
+.status {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius: 7px;
+  /* padding-inline: 10px; */
+  z-index: 100000;
+  background-color: var(--background-color);
+  font-size: 14px;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  transition: border 0.3s;
+}
+
+/* General styles */
+
+.color-box.correct {
+  animation: glow 0.5s ease-in-out;
+}
+
+.color-box.wrong {
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Error message shake */
+.error {
+  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.error.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Confetti effect */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: gold;
+  opacity: 0.7;
+  animation: confetti-fall 1s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(300px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 401px) {
+  .guessed-color {
+    width: 100%;
+    height: 200px;
+  }
+
+  .color-box {
+    width: 50px;
+    height: 50px;
+  }
+}
