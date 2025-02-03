@@ -51,7 +51,7 @@ body {
 
 @font-face {
   font-family: "nueue";
-  src: url("/stage0/tt_firs_neue/TT\ Firs\ Neue\ Trial\ Regular.ttf");
+  src: url("./tt_firs_neue/TT\ Firs\ Neue\ Trial\ Regular.ttf");
   font-style: normal;
 }
 
