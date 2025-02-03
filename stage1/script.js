@@ -38,7 +38,7 @@ const updateGame = () => {
   endGameButton.style.display = "block";
 
   // Generate a new array of 4 random RGB colors for this round
-  colors = getRandomColors(4);
+  colors = getRandomColors(6);
 
   // Pick a random target color from the colors array
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
